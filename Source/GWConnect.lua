@@ -1370,7 +1370,7 @@ end
 function update()
 	local var_28_0 = os.getenv("TEMP") .. "\\recon_version.json"
 
-	downloadUrlToFile("https://raw.githubusercontent.com/steave90/gw-connect/master/GWConnect.json", var_28_0, function(arg_29_0, arg_29_1, arg_29_2, arg_29_3)
+	downloadUrlToFile("https://github.com/steave90/GW-Connect/raw/refs/heads/master/master/GWConnect.json", var_28_0, function(arg_29_0, arg_29_1, arg_29_2, arg_29_3)
 		if arg_29_1 == var_0_5.STATUS_ENDDOWNLOADDATA then
 			local var_29_0 = io.open(var_28_0, "r")
 
