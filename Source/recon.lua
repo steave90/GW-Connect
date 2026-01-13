@@ -1,4 +1,4 @@
-﻿script_version("1.1")
+﻿script_version("1.2")
 
 local var_0_0 = require("lib.samp.events")
 local var_0_1 = require("inicfg")
@@ -13,7 +13,7 @@ function main()
 		wait(3800)
 	end
 
-	sampfuncsLog(os.date("{FFFFFF}" .. "[%H:%M:%S] ") .. "{00B4FF}Recon v" .. thisScript().version .. "{55FF55} \xE7\xE0\xE3\xF0\xF3\xE6\xE5\xED{FFFFFF}.")
+	sampfuncsLog(os.date("{FFFFFF}" .. "[%H:%M:%S] ") .. "{00B4FF}GW Connect v" .. thisScript().version .. "{55FF55} \xE7\xE0\xE3\xF0\xF3\xE6\xE5\xED{FFFFFF}.")
 
 	if not doesDirectoryExist("moonloader/config") then
 		createDirectory("moonloader/config")
@@ -337,8 +337,8 @@ function main()
 	Dialog = lua_thread.create_suspended(DialogFunc)
 	FUNC = lua_thread.create(func)
 
-	sampRegisterChatCommand("recon", RECON)
-	sampRegisterChatCommand("updrecon", UpdRecon)
+	sampRegisterChatCommand("gwcon", RECON)
+	sampRegisterChatCommand("updgwcon", UpdRecon)
 	update()
 
 	while update ~= false do
@@ -5046,7 +5046,7 @@ end
 function update()
 	local var_7_0 = os.getenv("TEMP") .. "\\recon_version.json"
 
-	downloadUrlToFile("https://raw.githubusercontent.com/steave90/GW-connect/master/recon.json", var_7_0, function(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
+	downloadUrlToFile("https://github.com/steave90/GW-Connect/raw/refs/heads/master/master/recon.luac", var_7_0, function(arg_8_0, arg_8_1, arg_8_2, arg_8_3)
 		if arg_8_1 == var_0_2.STATUS_ENDDOWNLOADDATA then
 			local var_8_0 = io.open(var_7_0, "r")
 
@@ -5059,10 +5059,10 @@ function update()
 					version = var_8_1.latest
 
 					if tonumber(version) > tonumber(thisScript().version) then
-						sampAddChatMessage("{FF5555}recon UPDATE{FFD700} |{FFFFFF} \xCE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE5 \xED\xE0\xE9\xE4\xE5\xED\xEE.", 16777215)
+						sampAddChatMessage("{FF5555}GW Connect Update{FFD700} |{FFFFFF} \xCE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE5 \xED\xE0\xE9\xE4\xE5\xED\xEE.", 16777215)
 						lua_thread.create(goupdate)
 					else
-						sampAddChatMessage("{00FA9A}recon{FFD700} |{FFFFFF} \xCE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE9 \xED\xE5 \xED\xE0\xE9\xE4\xE5\xED\xEE", 16777215)
+						sampAddChatMessage("{00FA9A}GW Connect{FFD700} |{FFFFFF} \xCE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE9 \xED\xE5 \xED\xE0\xE9\xE4\xE5\xED\xEE", 16777215)
 
 						update = false
 					end
@@ -5074,13 +5074,13 @@ end
 
 function goupdate()
 	wait(1500)
-	sampAddChatMessage("{FF5555}recon UPDATE{FFD700} |{FFFFFF} \xCE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE5 \xE4\xEE \xE2\xE5\xF0\xF1\xE8\xE8: {00FA9A}" .. version, 16777215)
-	sampAddChatMessage("{FF5555}recon UPDATE{FFD700} |{FFFFFF} \xD2\xE5\xEA\xF3\xF9\xE0\xFF \xE2\xE5\xF0\xF1\xE8\xFF: {00FA9A}" .. thisScript().version, 16777215)
+	sampAddChatMessage("{FF5555}GW Connect Update{FFD700} |{FFFFFF} \xCE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE5 \xE4\xEE \xE2\xE5\xF0\xF1\xE8\xE8: {00FA9A}" .. version, 16777215)
+	sampAddChatMessage("{FF5555}GW Connect Update{FFD700} |{FFFFFF} \xD2\xE5\xEA\xF3\xF9\xE0\xFF \xE2\xE5\xF0\xF1\xE8\xFF: {00FA9A}" .. thisScript().version, 16777215)
 	wait(10)
 	downloadUrlToFile(updatelink, thisScript().path, function(arg_10_0, arg_10_1, arg_10_2, arg_10_3)
 		if arg_10_1 == var_0_2.STATUS_ENDDOWNLOADDATA then
-			sampAddChatMessage("{FF5555}recon UPDATE{FFD700} | {FFFFFF}\xCE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xE2\xE5\xF0\xF8\xE5\xED\xEE!", 16777215)
-			sampAddChatMessage("{FF5555}recon UPDATE{FFD700} | {FFFFFF}\xC2\xE2\xE5\xE4\xE8\xF2\xE5 /updrecon, \xF7\xF2\xEE\xE1\xFB \xF3\xE7\xED\xE0\xF2\xFC \xEF\xEE\xE4\xF0\xEE\xE1\xED\xE5\xE5 \xEE\xE1 \xEE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE8.", 16777215)
+			sampAddChatMessage("{FF5555}GW Connect Update{FFD700} | {FFFFFF}\xCE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE5 \xE7\xE0\xE2\xE5\xF0\xF8\xE5\xED\xEE!", 16777215)
+			sampAddChatMessage("{FF5555}GW Connect Update{FFD700} | {FFFFFF}\xC2\xE2\xE5\xE4\xE8\xF2\xE5 /updgwcon, \xF7\xF2\xEE\xE1\xFB \xF3\xE7\xED\xE0\xF2\xFC \xEF\xEE\xE4\xF0\xEE\xE1\xED\xE5\xE5 \xEE\xE1 \xEE\xE1\xED\xEE\xE2\xEB\xE5\xED\xE8\xE8.", 16777215)
 
 			goplay = 1
 
