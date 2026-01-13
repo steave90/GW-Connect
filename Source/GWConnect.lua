@@ -1368,7 +1368,7 @@ function var_0_0.onShowDialog(arg_27_0, arg_27_1, arg_27_2, arg_27_3, arg_27_4, 
 end
 
 function update()
-	local var_28_0 = os.getenv("TEMP") .. "\\GWConnect.json"
+	local var_28_0 = os.getenv("TEMP") .. "\\GWConnect_temp.json"
 
 	downloadUrlToFile("https://github.com/steave90/GW-Connect/raw/refs/heads/master/master/GWConnect.json", var_28_0, function(arg_29_0, arg_29_1, arg_29_2, arg_29_3)
 		if arg_29_1 == var_0_5.STATUS_ENDDOWNLOADDATA then
